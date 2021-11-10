@@ -7,7 +7,7 @@ pipeline {
                 
                 timeout(time: 3, unit: 'MINUTES') {
                     retry(5) {
-                        sh './test.sh'
+                        echo "Building script location"
                     }
                 }
             }
