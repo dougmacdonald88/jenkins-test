@@ -3,6 +3,21 @@ pipeline {
     stages {
         stage('build') {
             steps {
+                echo 'Building'
+                sh 'mvn --version'
+            }
+        }
+        
+        stage('test') {
+            steps {
+                echo 'Testing'
+                sh 'mvn --version'
+            }
+        }
+        
+        stage('deploy') {
+            steps {
+                echo 'Deploying'
                 sh 'mvn --version'
             }
         }
