@@ -4,21 +4,28 @@ pipeline {
         stage('build') {
             steps {
                 echo 'Building'
-                sh 'mvn --version'
+                
+                retry(3) {
+                    sh './flakey-deploy.sh'
+                }
+
+                timeout(time: 3, unit: 'MINUTES') {
+                    sh './health-check.sh'
+                }
             }
         }
         
         stage('test') {
             steps {
                 echo 'Testing'
-                sh 'mvn --version'
+
             }
         }
         
         stage('deploy') {
             steps {
                 echo 'Deploying'
-                sh 'mvn --version'
+
             }
         }
     }
